@@ -220,6 +220,9 @@ class Openweathermap extends adapter_core_1.Adapter {
                 result.date ||= sum[i].date;
                 result.windDirectionText ||= sum[i].windDirectionText;
             }
+            if (result.temperatureFeel === undefined || result.temperatureFeel > sum[i].temperatureFeel) {
+                result.temperatureFeel = sum[i].temperatureMin;
+            }
             if (result.temperatureMin === undefined || result.temperatureMin > sum[i].temperatureMin) {
                 result.temperatureMin = sum[i].temperatureMin;
             }
