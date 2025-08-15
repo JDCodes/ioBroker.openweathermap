@@ -391,8 +391,8 @@ class Openweathermap extends Adapter {
             date?: number;
             humidity?: number;
             icon?: string;
-            precipitationRain?: number | null;
-            precipitationSnow?: number | null;
+            precipitationRain?: number;
+            precipitationSnow?: number;
             pressure?: number;
             state?: string;
             temperatureFeel?: number;
@@ -402,7 +402,7 @@ class Openweathermap extends Adapter {
             windDirection?: number;
             windDirectionText?: string;
             windSpeed?: number;
-            precipitation?: number | null;
+            precipitation?: number;
         } = {};
         for (let i = 0; i < sum.length; i++) {
             if (new Date(sum[i].date).getHours() >= 12) {
@@ -487,7 +487,7 @@ class Openweathermap extends Adapter {
         result.date ||= sum[sum.length - 1].date;
 
         if (result.precipitationRain === null && result.precipitationSnow === null) {
-            result.precipitation = null;
+            result.precipitation = 0;
         } else {
             result.precipitation = (result.precipitationRain || 0) + (result.precipitationSnow || 0);
         }
