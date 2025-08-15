@@ -656,7 +656,7 @@
         "desc": "Forecast of temperature. Feel value."
       },
       "native": {
-        "path": "main.temp_min",
+        "path": "main.feels_like",
         "metric": "°C",
         "imperial": "°F",
         "type": "forecast"
