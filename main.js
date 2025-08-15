@@ -179,6 +179,7 @@ class Openweathermap extends adapter_core_1.Adapter {
         for (let i = 0; i < ids.length; i++) {
             if (ids[i].native.path) {
                 result[ids[i]._id.split('.').pop()] = this.extractValue(data, ids[i].native.path);
+                reject(new Warning(`Value: ' this.extractValue(data, ids[i].native.path));
             }
         }
         if (result.precipitationRain === null) {
