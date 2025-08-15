@@ -121,8 +121,8 @@ interface ForecastWeatherResult {
     date: number;
     humidity: number;
     icon: string;
-    precipitationRain: number | null;
-    precipitationSnow: number | null;
+    precipitationRain: number;
+    precipitationSnow: number;
     pressure: number;
     state: string;
     temperatureMax: number;
@@ -131,7 +131,7 @@ interface ForecastWeatherResult {
     windDirection: number;
     windDirectionText: string;
     windSpeed: number;
-    precipitation: number | null;
+    precipitation: number;
 }
 
 interface CurrentWeatherResult extends ForecastWeatherResult {
@@ -353,7 +353,7 @@ class Openweathermap extends Adapter {
             }
         }
         if (result.precipitationRain === null && result.precipitationSnow === null) {
-            result.precipitation = null;
+            result.precipitation = 0;
         } else {
             result.precipitation = (result.precipitationRain || 0) + (result.precipitationSnow || 0);
         }
@@ -394,6 +394,7 @@ class Openweathermap extends Adapter {
             precipitationSnow?: number | null;
             pressure?: number;
             state?: string;
+            temperatureFeel?: number;
             temperatureMax?: number;
             temperatureMin?: number;
             title?: string;
@@ -411,6 +412,9 @@ class Openweathermap extends Adapter {
                 result.windDirectionText ||= sum[i].windDirectionText;
             }
 
+            if (result.temperatureFeel === undefined || result.temperatureFeel > sum[i].temperatureFeel) {
+                result.temperatureFeel = sum[i].temperatureFeel;
+            }
             if (result.temperatureMin === undefined || result.temperatureMin > sum[i].temperatureMin) {
                 result.temperatureMin = sum[i].temperatureMin;
             }
