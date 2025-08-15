@@ -296,6 +296,11 @@ class Openweathermap extends adapter_core_1.Adapter {
         else {
             result.precipitation = (result.precipitationRain || 0) + (result.precipitationSnow || 0);
         }
+        if (counts.windDirection != null) {
+            result.windDirectionText = this.angleToDirectionString(result.windDirection);
+        } else {
+            result.windDirectionText = '-';
+        }
         this.log.debug(`Process forecast for day ${day}`);
         for (const attr in result) {
             if (!Object.prototype.hasOwnProperty.call(result, attr)) {
