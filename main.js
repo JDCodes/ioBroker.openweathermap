@@ -182,7 +182,7 @@ class Openweathermap extends adapter_core_1.Adapter {
             }
         }
         if (result.precipitationRain === null && result.precipitationSnow === null) {
-            result.precipitation = null;
+            result.precipitation = 0;
         }
         else {
             result.precipitation = (result.precipitationRain || 0) + (result.precipitationSnow || 0);
@@ -282,7 +282,7 @@ class Openweathermap extends adapter_core_1.Adapter {
         result.title ||= sum[sum.length - 1].title;
         result.date ||= sum[sum.length - 1].date;
         if (result.precipitationRain === null && result.precipitationSnow === null) {
-            result.precipitation = null;
+            result.precipitation = 0;
         }
         else {
             result.precipitation = (result.precipitationRain || 0) + (result.precipitationSnow || 0);
