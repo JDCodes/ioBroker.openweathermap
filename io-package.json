@@ -301,6 +301,25 @@
       }
     },
     {
+      "_id": "forecast.current.temperatureFeel",
+      "type": "state",
+      "common": {
+        "name": "Feel temperature for today",
+        "type": "number",
+        "role": "value.temperature.feel",
+        "read": true,
+        "write": false,
+        "unit": "°C",
+        "desc": "Feel temperature for today"
+      },
+      "native": {
+        "path": "main.temp_min",
+        "metric": "°C",
+        "imperial": "°F",
+        "type": "current"
+      }
+    },
+    {
       "_id": "forecast.current.temperatureMin",
       "type": "state",
       "common": {
@@ -640,6 +659,25 @@
       },
       "native": {
         "path": "weather.0.main",
+        "type": "forecast"
+      }
+    },
+    {
+      "_id": "forecast.day0.temperatureFeel",
+      "type": "state",
+      "common": {
+        "name": "Forecast of temperature",
+        "type": "number",
+        "role": "value.temperature.feel.forecast.0",
+        "read": true,
+        "write": false,
+        "unit": "°C",
+        "desc": "Forecast of temperature. Feel value."
+      },
+      "native": {
+        "path": "main.temp_min",
+        "metric": "°C",
+        "imperial": "°F",
         "type": "forecast"
       }
     },
