@@ -301,25 +301,6 @@
       }
     },
     {
-      "_id": "forecast.current.temperatureFeel",
-      "type": "state",
-      "common": {
-        "name": "Feel temperature for today",
-        "type": "number",
-        "role": "value.temperature.feel",
-        "read": true,
-        "write": false,
-        "unit": "°C",
-        "desc": "Feel temperature for today"
-      },
-      "native": {
-        "path": "main.temp_min",
-        "metric": "°C",
-        "imperial": "°F",
-        "type": "current"
-      }
-    },
-    {
       "_id": "forecast.current.temperatureMin",
       "type": "state",
       "common": {
