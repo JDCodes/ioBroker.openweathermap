@@ -125,6 +125,7 @@ interface ForecastWeatherResult {
     precipitationSnow: number;
     pressure: number;
     state: string;
+    temperatureFeel: number;
     temperatureMax: number;
     temperatureMin: number;
     title: string;
