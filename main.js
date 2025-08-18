@@ -224,7 +224,7 @@ class Openweathermap extends adapter_core_1.Adapter {
                 result.state ||= sum[i].state;
                 result.title ||= sum[i].title;
                 result.date ||= sum[i].date;
-                result day_short = formatDate(getDateObject(result.date, 'W', 'de'));
+                result.day_short ||= formatDate(getDateObject(result.date, 'W', this.config.language));
                 result.windDirectionText ||= sum[i].windDirectionText;
             }
             if (result.temperatureFeel === undefined || result.temperatureFeel > sum[i].temperatureFeel) {
