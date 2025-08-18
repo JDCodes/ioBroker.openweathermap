@@ -202,8 +202,8 @@ class Openweathermap extends adapter_core_1.Adapter {
         }
         if (result.date) {
             result.date = result.date * 1000;
-            result.day ||= new Date(result.date).toLocaleDateString(this.config.language, { weekday: 'long' }).toString();
-            result.day_short ||= new Date(result.date).toLocaleDateString(this.config.language, { weekday: 'short' }).toString();
+            result.day = (new Date(result.date).toLocaleDateString(this.config.language, { weekday: 'long' })).toString();
+            result.day_short = (new Date(result.date).toLocaleDateString(this.config.language, { weekday: 'short' })).toString();
         }
         return result;
     }
@@ -226,8 +226,8 @@ class Openweathermap extends adapter_core_1.Adapter {
                 result.state ||= sum[i].state;
                 result.title ||= sum[i].title;
                 result.date ||= sum[i].date;
-                result.day ||= new Date(sum[i].date).toLocaleDateString(this.config.language, { weekday: 'long' }).toString();
-                result.day_short ||= new Date(sum[i].date).toLocaleDateString(this.config.language, { weekday: 'short' }).toString();
+                result.day ||= (new Date(sum[i].date).toLocaleDateString(this.config.language, { weekday: 'long' })).toString();
+                result.day_short ||= (new Date(sum[i].date).toLocaleDateString(this.config.language, { weekday: 'short' })).toString();
                 result.windDirectionText ||= sum[i].windDirectionText;
             }
             if (result.temperatureFeel === undefined || result.temperatureFeel > sum[i].temperatureFeel) {
@@ -294,8 +294,8 @@ class Openweathermap extends adapter_core_1.Adapter {
         result.state ||= sum[sum.length - 1].state;
         result.title ||= sum[sum.length - 1].title;
         result.date ||= sum[sum.length - 1].date;
-        result.day ||= new Date(sum[sum.length - 1].date).toLocaleDateString(this.config.language, { weekday: 'long' }).toString();
-        result.day_short ||= new Date(sum[sum.length - 1].date).toLocaleDateString(this.config.language, { weekday: 'short' }).toString();
+        result.day ||= (new Date(sum[sum.length - 1].date).toLocaleDateString(this.config.language, { weekday: 'long' })).toString();
+        result.day_short ||= (new Date(sum[sum.length - 1].date).toLocaleDateString(this.config.language, { weekday: 'short' })).toString();
         if (result.precipitationRain === null && result.precipitationSnow === null) {
             result.precipitation = 0;
         }
