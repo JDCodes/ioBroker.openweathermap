@@ -291,6 +291,7 @@ class Openweathermap extends adapter_core_1.Adapter {
         result.state ||= sum[sum.length - 1].state;
         result.title ||= sum[sum.length - 1].title;
         result.date ||= sum[sum.length - 1].date;
+        result.day_short ||= new Date(sum[sum.length - 1].date).toLocaleDateString(this.config.language, { weekday: 'short' }).toString();
         if (result.precipitationRain === null && result.precipitationSnow === null) {
             result.precipitation = 0;
         }
