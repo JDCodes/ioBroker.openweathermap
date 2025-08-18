@@ -234,6 +234,38 @@
       }
     },
     {
+      "_id": "forecast.current.day",
+      "type": "state",
+      "common": {
+        "name": "Actual day",
+        "type": "string",
+        "role": "date",
+        "read": true,
+        "write": false,
+        "desc": "Actual day as string"
+      },
+      "native": {
+        "path": "dt",
+        "type": "current"
+      }
+    },
+    {
+      "_id": "forecast.current.day_short",
+      "type": "state",
+      "common": {
+        "name": "Actual day short",
+        "type": "string",
+        "role": "date",
+        "read": true,
+        "write": false,
+        "desc": "Actual day as short string"
+      },
+      "native": {
+        "path": "dt",
+        "type": "current"
+      }
+    },
+    {
       "_id": "forecast.current.icon",
       "type": "state",
       "common": {
@@ -608,6 +640,22 @@
         "read": true,
         "write": false,
         "desc": "Actual date as string"
+      },
+      "native": {
+        "path": "dt",
+        "type": "forecast"
+      }
+    },
+    {
+      "_id": "forecast.day0.day",
+      "type": "state",
+      "common": {
+        "name": "Forecast day",
+        "type": "string",
+        "role": "date.forecast.0",
+        "read": true,
+        "write": false,
+        "desc": "Actual day as string"
       },
       "native": {
         "path": "dt",
