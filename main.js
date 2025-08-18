@@ -224,8 +224,7 @@ class Openweathermap extends adapter_core_1.Adapter {
                 result.state ||= sum[i].state;
                 result.title ||= sum[i].title;
                 result.date ||= sum[i].date;
-                const dateObj = getDateObject(result.date, 'W', this.config.language);
-                result.day_short ||= dateObj.toLocaleDateString(this.config.language, { weekday: 'short' });
+                result.day_short ||= new Date(sum[i].date).toLocaleDateString(language, { weekday: 'short' });
                 result.windDirectionText ||= sum[i].windDirectionText;
             }
             if (result.temperatureFeel === undefined || result.temperatureFeel > sum[i].temperatureFeel) {
