@@ -615,6 +615,22 @@
       }
     },
     {
+      "_id": "forecast.day0.day_short",
+      "type": "state",
+      "common": {
+        "name": "Forecast day short",
+        "type": "string",
+        "role": "date.forecast.0",
+        "read": true,
+        "write": false,
+        "desc": "Actual day as short string"
+      },
+      "native": {
+        "path": "dt",
+        "type": "forecast"
+      }
+    },
+    {
       "_id": "forecast.day0.icon",
       "type": "state",
       "common": {
