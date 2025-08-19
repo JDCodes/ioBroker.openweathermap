@@ -121,18 +121,17 @@ interface ForecastWeatherResult {
     date: number;
     humidity: number;
     icon: string;
-    precipitationRain: number;
-    precipitationSnow: number;
+    precipitationRain: number | null;
+    precipitationSnow: number | null;
     pressure: number;
     state: string;
-    temperatureFeel: number;
     temperatureMax: number;
     temperatureMin: number;
     title: string;
     windDirection: number;
     windDirectionText: string;
     windSpeed: number;
-    precipitation: number;
+    precipitation: number | null;
 }
 
 interface CurrentWeatherResult extends ForecastWeatherResult {
@@ -353,14 +352,8 @@ class Openweathermap extends Adapter {
                 result[ids[i]._id.split('.').pop() as string] = this.extractValue(data, ids[i].native.path);
             }
         }
-        if (result.precipitationRain === null){
-            result.precipitationRain = 0;
-        }
-        if (result.precipitationSnow === null){
-            result.precipitationSnow = 0;
-        }
         if (result.precipitationRain === null && result.precipitationSnow === null) {
-            result.precipitation = 0;
+            result.precipitation = null;
         } else {
             result.precipitation = (result.precipitationRain || 0) + (result.precipitationSnow || 0);
         }
@@ -397,18 +390,17 @@ class Openweathermap extends Adapter {
             date?: number;
             humidity?: number;
             icon?: string;
-            precipitationRain?: number;
-            precipitationSnow?: number;
+            precipitationRain?: number | null;
+            precipitationSnow?: number | null;
             pressure?: number;
             state?: string;
-            temperatureFeel?: number;
             temperatureMax?: number;
             temperatureMin?: number;
             title?: string;
             windDirection?: number;
             windDirectionText?: string;
             windSpeed?: number;
-            precipitation?: number;
+            precipitation?: number | null;
         } = {};
         for (let i = 0; i < sum.length; i++) {
             if (new Date(sum[i].date).getHours() >= 12) {
@@ -419,9 +411,6 @@ class Openweathermap extends Adapter {
                 result.windDirectionText ||= sum[i].windDirectionText;
             }
 
-            if (result.temperatureFeel === undefined || result.temperatureFeel > sum[i].temperatureFeel) {
-                result.temperatureFeel = sum[i].temperatureFeel;
-            }
             if (result.temperatureMin === undefined || result.temperatureMin > sum[i].temperatureMin) {
                 result.temperatureMin = sum[i].temperatureMin;
             }
@@ -493,7 +482,7 @@ class Openweathermap extends Adapter {
         result.date ||= sum[sum.length - 1].date;
 
         if (result.precipitationRain === null && result.precipitationSnow === null) {
-            result.precipitation = 0;
+            result.precipitation = null;
         } else {
             result.precipitation = (result.precipitationRain || 0) + (result.precipitationSnow || 0);
         }
