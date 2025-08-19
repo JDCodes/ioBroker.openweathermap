@@ -949,7 +949,7 @@
       "_id": "forecast.day0.visibility",
       "type": "state",
       "common": {
-        "name": "Actual visibility",
+        "name": "Forecast for visibility",
         "type": "number",
         "role": "value.distance.visibility",
         "read": true,
