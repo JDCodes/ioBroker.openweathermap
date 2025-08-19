@@ -257,6 +257,12 @@ class Openweathermap extends adapter_core_1.Adapter {
                 result.pressure += sum[i].pressure;
                 counts.pressure++;
             }
+            result.visibility ||= 0;
+            counts.visibility ||= 0;
+            if (sum[i].visibility !== null) {
+                result.visibility += sum[i].visibility;
+                counts.visibility++;
+            }
             result.precipitationRain ||= 0;
             counts.precipitationRain ||= 0;
             if (sum[i].precipitationRain !== null) {
