@@ -944,6 +944,25 @@
         "path": "main.humidity",
         "type": "forecast"
       }
+    },
+    {
+      "_id": "forecast.day0.visibility",
+      "type": "state",
+      "common": {
+        "name": "Actual visibility",
+        "type": "number",
+        "role": "value.distance.visibility",
+        "read": true,
+        "write": false,
+        "unit": "m",
+        "desc": "Actual visibility in meters"
+      },
+      "native": {
+        "path": "visibility",
+        "metric": "meters",
+        "imperial": "miles",
+        "type": "forecast"
+      }
     }
   ]
 }
