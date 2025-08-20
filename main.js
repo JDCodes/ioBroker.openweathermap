@@ -303,7 +303,7 @@ class Openweathermap extends adapter_core_1.Adapter {
         result.day ||= (new Date(sum[sum.length - 1].date).toLocaleDateString(this.config.language, { weekday: 'long' })).toString();
         result.day_short ||= (new Date(sum[sum.length - 1].date).toLocaleDateString(this.config.language, { weekday: 'short' })).toString();
         if (result.precipitationRain === null && result.precipitationSnow === null) {
-            result.precipitation = 0;
+            result.precipitation = 100;
         }
         else {
             result.precipitation = (result.precipitationRain || 0) + (result.precipitationSnow || 0);
