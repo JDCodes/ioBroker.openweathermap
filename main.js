@@ -303,7 +303,7 @@ class Openweathermap extends adapter_core_1.Adapter {
         result.day ||= (new Date(sum[sum.length - 1].date).toLocaleDateString(this.config.language, { weekday: 'long' })).toString();
         result.day_short ||= (new Date(sum[sum.length - 1].date).toLocaleDateString(this.config.language, { weekday: 'short' })).toString();
         if (result.precipitationRain === null && result.precipitationSnow === null) {
-            result.precipitation = 100;
+            result.precipitation = 0;
         }
         else {
             result.precipitation = (result.precipitationRain || 0) + (result.precipitationSnow || 0);
@@ -312,6 +312,15 @@ class Openweathermap extends adapter_core_1.Adapter {
         for (const attr in result) {
             if (!Object.prototype.hasOwnProperty.call(result, attr)) {
                 continue;
+            }
+            if (counts[attr]) {
+                // Regen & Schnee sollen summiert bleiben, nicht gemittelt
+                if (attr === 'precipitationRain' || attr === 'precipitationSnow') {
+                    continue;
+                }
+                result[attr] = Math.round(result[attr] / counts[attr]);
+            } else {
+                result[attr] = null;
             }
             this.tasks.push({
                 id: `forecast.day${day}.${attr}`,
