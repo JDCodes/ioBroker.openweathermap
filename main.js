@@ -290,9 +290,12 @@ class Openweathermap extends adapter_core_1.Adapter {
                 continue;
             }
             if (counts[attr]) {
+                // Regen & Schnee sollen summiert bleiben, nicht gemittelt
+                if (attr === 'precipitationRain' || attr === 'precipitationSnow') {
+                    continue;
+                }
                 result[attr] = Math.round(result[attr] / counts[attr]);
-            }
-            else {
+            } else {
                 result[attr] = null;
             }
         }
