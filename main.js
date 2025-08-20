@@ -313,15 +313,6 @@ class Openweathermap extends adapter_core_1.Adapter {
             if (!Object.prototype.hasOwnProperty.call(result, attr)) {
                 continue;
             }
-            if (counts[attr]) {
-                // Regen & Schnee sollen summiert bleiben, nicht gemittelt
-                if (attr === 'precipitationRain' || attr === 'precipitationSnow') {
-                    continue;
-                }
-                result[attr] = Math.round(result[attr] / counts[attr]);
-            } else {
-                result[attr] = null;
-            }
             this.tasks.push({
                 id: `forecast.day${day}.${attr}`,
                 val: result[attr],
